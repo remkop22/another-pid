@@ -1,18 +1,18 @@
 
 class PID:
 
-    def __init__(self, Kp, Ki, Kd, time_interval, setpoint):
+    def __init__(self, Kp, Ki, Kd, time_interval, set_point):
         self.Kp = Kp
         self.Ki = Ki
         self.Kd = Kd
         self.time_interval = time_interval
-        self.setpoint = setpoint
+        self.set_point = set_point
 
         self.accumalative_error = 0
         self.previous_error = 0
 
     def error(self, process_value):
-        return self.setpoint - process_value
+        return self.set_point - process_value
 
     def proportional(self, process_value):
         return self.error(process_value) * self.Kp
