@@ -24,7 +24,10 @@ class PID:
     def derivative(self, process_value):
         derr = (self.error(process_value) - self.previous_error) / self.time_interval
         self.previous_error = self.error(process_value)
-        return derr
+        return derr * self.Kd
 
     def next_value(self, process_value):
-        return self.proportional(process_value) + self.integral(process_value) + self.derivative(process_value)
+        p = self.proportional(process_value)
+        i = self.integral(process_value)
+        d = self.derivative(process_value)
+        return p + i + d
